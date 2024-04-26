@@ -1,0 +1,17 @@
+img {
+    border-radius: 50%;
+    }
+
+.kotak {
+    margin-bottom: 300px;
+    padding-left: 500px;
+}
+.kotak2 {
+    margin-top: 500px;
+    padding-left: 500px;
+}
+.kotakpoto {
+    margin-top: 50px;
+    padding-left: 500px;
+    border-radius: 50%;
+}
