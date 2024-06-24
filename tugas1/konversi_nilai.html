@@ -1,0 +1,32 @@
+<form id="gradeForm">
+    <input type="text" id="gradeInput" name="gradeInput">
+    <button type="submit">Convert Grade</button>
+</form>
+<div id="result"></div>
+
+<script>
+document.getElementById("gradeForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    var score = parseInt(document.getElementById("gradeInput").value);
+    var result = convertGrade(score);
+    document.getElementById("result").textContent = "Result: " + result;
+});
+function convertGrade(score) {
+    if (score >= 80 && score <= 100) {
+        return "A";
+    } else if (score >= 70 && score < 80) {
+        return "B";
+    } else if (score >= 60 && score < 70) {
+        return "C";
+    } else if (score >= 50 && score < 60) {
+        return "D";
+    } else {
+        return "E";
+    }
+}
+
+// Example usage:
+console.log(convertGrade(85)); // Output: A
+console.log(convertGrade(65)); // Output: C
+
+</script>

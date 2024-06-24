@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: rgb(161, 87, 182);
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+    }
+    label {
+      margin-top: 20px;
+      font-size: 1.2rem;
+    }
+    input[type="number"] {
+      padding: 5px;
+      font-size: 1.2rem;
+      width: 200px;
+    }
+    button {
+      margin-top: 30px;
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      background-color: rgb(40, 246, 243);
+      color: rgb(0, 1, 0);
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .result {
+      margin-top: 30px;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+  </style>
+  <title>Gaji Calculator</title>
+</head>
+<body>
+  <form id="salaryForm">
+    <label for="hoursWorked">Jam Kerja:</label>
+    <input type="number" id="hoursWorked" name="hoursWorked" min="0" step="0.01" required>
+
+    <label for="overtimeHours">Jam lembur:</label>
+    <input type="number" id="overtimeHours" name="overtimeHours" min="0" step="0.01" required>
+
+    <button type="button" id="calculateButton">Hitung Gaji</button>
+  </form>
+  <div class="result" id="result"></div>
+
+  <script>
+    const calculateButton = document.getElementById('calculateButton');
+    const hoursWorkedInput = document.getElementById('hoursWorked');
+    const overtimeHoursInput = document.getElementById('overtimeHours');
+    const resultDiv = document.getElementById('result');
+
+    calculateButton.addEventListener('click', () => {
+      const hoursWorked = parseFloat(hoursWorkedInput.value);
+      const overtimeHours = parseFloat(overtimeHoursInput.value);
+
+      const totalSalary = calculateSalary(hoursWorked, overtimeHours);
+
+      resultDiv.textContent = `Total Salary: ${totalSalary}`;
+    });
+
+    function calculateSalary(hoursWorked, overtimeHours) {
+      const baseSalary = 50000;
+     let regularSalary = baseSalary * hoursWorked;
+      let overtimeSalary = 0;
+
+      if (overtimeHours > 0) {
+        if (overtimeHours >= 1 && overtimeHours <= 2) {
+          overtimeSalary = 25000 * overtimeHours;
+        } else if (overtimeHours > 2) {
+          overtimeSalary = 35000 * overtimeHours;
+        }
+      }
+
+      let totalSalary = regularSalary + overtimeSalary;
+
+      if (hoursWorked >= 20) {
+        totalSalary += 5000; // bonus for food
+      }
+
+      return totalSalary;
+    }
+  </script>
+  <script src="ddt_gaji.js"></script>
+</body>
+</html>

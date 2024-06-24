@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabungan Calculator</title>
+<style>
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+form {
+    width: 50%;
+    margin: 40px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="number"] {
+    width: 100%;
+    height: 30px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+button[type="button"] {
+    width: 100%;
+    height: 30px;
+    margin-top: 20px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    cursor: pointer;
+}
+
+button[type="button"]:hover {
+    background-color: #3e8e41;
+}
+
+#result {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    display: none; /* Add this line to hide the result div initially */
+}
+
+#total-amount {
+    font-size: 24px;
+    font-weight: bold;
+    color: #666;
+}
+
+</style>
+
+
+
+
+</head>
+<body>
+    <h1>Tabungan Calculator</h1>
+    <form>
+        <label for="initial-amount">Initial Amount:</label>
+        <input type="number" id="initial-amount" value="0">
+
+        <label for="monthly-deposit">Monthly Deposit:</label>
+        <input type="number" id="monthly-deposit" value="0">
+
+        <label for="interest-rate">Interest Rate (%):</label>
+        <input type="number" id="interest-rate" value="0">
+
+        <label for="years">Years:</label>
+        <input type="number" id="years" value="0">
+
+        <button id="calculate">Calculate</button>
+
+        <div id="result">
+            <p>Result:</p>
+            <p id="total-amount"></p>
+        </div>
+    </form>
+<script>
+
+const initialAmountInput = document.getElementById('initial-amount');
+const monthlyDepositInput = document.getElementById('monthly-deposit');
+const interestRateInput = document.getElementById('interest-rate');
+const yearsInput = document.getElementById('years');
+const calculateButton = document.getElementById('calculate');
+const resultDiv = document.getElementById('result');
+const totalAmountElement = document.getElementById('total-amount');
+
+calculateButton.addEventListener('click', calculateTabungan);
+
+function calculateTabungan() {
+    const initialAmount = parseFloat(initialAmountInput.value);
+    const monthlyDeposit = parseFloat(monthlyDepositInput.value);
+    const interestRate = parseFloat(interestRateInput.value) / 100;
+    const years = parseFloat(yearsInput.value);
+
+    let totalAmount = initialAmount;
+    for (let i = 0; i < years * 12; i++) {
+        totalAmount += monthlyDeposit;
+        totalAmount += totalAmount * interestRate / 12;
+    }
+
+    totalAmountElement.textContent = `Rp ${totalAmount.toFixed(2)}`; /* Fix the text content update */
+    resultDiv.style.display = 'block'; /* Show the result div */
+}
+
+</script>
+</body>
+</html>

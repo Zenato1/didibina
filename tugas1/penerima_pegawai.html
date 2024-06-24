@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pegawai Penerimaan Program</title>
+    <link rel="stylesheet" href="penerima_pegawai.css">
+</head>
+<body>
+    <h1>Pegawai Penerimaan Program</h1>
+    <form id="candidate-form">
+        <label for="jk">Jenis Kelamin:</label>
+        <select id="jk" name="jk">
+            <option value="laki-laki">Laki-laki</option>
+            <option value="perempuan">Perempuan</option>
+        </select>
+        <br><br>
+        <label for="tinggi-badan">Tinggi Badan (cm):</label>
+        <input type="number" id="tinggi-badan" name="tinggi-badan">
+        <br><br>
+        <label for="bb">Berat Badan (kg):</label>
+        <input type="number" id="bb" name="bb">
+        <br><br>
+        <label for="ipk">IPK:</label>
+        <input type="number" id="ipk" name="ipk" step="0.1">
+        <br><br>
+        <label for="pendidikan">Pendidikan:</label>
+        <select id="pendidikan" name="pendidikan">
+            <option value="D3">D3</option>
+            <option value="S1">S1</option>
+        </select>
+        <br><br>
+        <button type="submit">Check Eligibility</button>
+    </form>
+    <div id="result"></div>
+
+    <script src="penerima_pegawai.js"></script>
+</body>
+</html>
